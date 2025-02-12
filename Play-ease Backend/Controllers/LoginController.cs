@@ -15,11 +15,11 @@ namespace Play_ease_Backend.Controllers
         {
             _context = context;
         }
-
+    //Test
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] LoginRequestDto loginRequest)
         {
-            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Email) || string.IsNullOrEmpty(loginRequest.Password))
+            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Email) ||  string.IsNullOrEmpty(loginRequest.Password))
             {
                 return BadRequest(new { message = "Email and Password are required." });
             }
