@@ -4,6 +4,8 @@ using System.Data;
 
 namespace Play_ease_Backend.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class GetDataFromDatasourceController : ControllerBase
     {
         private readonly IConfiguration _config;
@@ -43,4 +45,7 @@ namespace Play_ease_Backend.Controllers
         }
 
     }
+
+
+
 }
