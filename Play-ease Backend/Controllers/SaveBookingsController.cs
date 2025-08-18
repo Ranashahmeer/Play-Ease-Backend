@@ -25,22 +25,25 @@ namespace Play_ease_Backend.Controllers
                     conn.Open();
 
                     var sql = @"INSERT INTO Bookings
-                               (CourtID, OwnerID, UserID, PaymentMethodID, PaymentProof, BookingDate, StartTime, EndTime, Price, Status)
-                               VALUES (@CourtId, @OwnerId, @UserId, @PaymentMethodId, @PaymentProof, @BookingDate, @StartTime, @EndTime, @Price, 'Pending')";
+                               (CourtID, CourtPitchID, UserID, OwnerID, PaymentMethodID, PaymentProof, BookingDate, StartTime, EndTime, Price, PaymentStatus, CreatedAt)
+                               VALUES (@CourtId, @CourtPitchID, @UserId, @OwnerId, @PaymentMethodId, @PaymentProof, @BookingDate, @StartTime, @EndTime, @Price, @PaymentStatus, @CreatedAt)";
 
                     using (var cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@CourtId", dto.CourtId);
+                        cmd.Parameters.AddWithValue("@CourtID", dto.CourtId);
+                        cmd.Parameters.AddWithValue("@CourtPitchID", dto.CourtPitchId);
+                        cmd.Parameters.AddWithValue("@UserId", dto.UserId); // ✅ hardcoded user
                         cmd.Parameters.AddWithValue("@OwnerId", dto.OwnerId);
-                        cmd.Parameters.AddWithValue("@UserId", dto.UserId);
                         cmd.Parameters.AddWithValue("@PaymentMethodId", dto.PaymentMethodId);
-                        cmd.Parameters.AddWithValue("@PaymentProof", dto.PaymentProof ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PaymentProof", dto.PaymentProof ?? "dummy-proof.jpg");
                         cmd.Parameters.AddWithValue("@BookingDate", dto.BookingDate);
                         cmd.Parameters.AddWithValue("@StartTime", dto.StartTime);
                         cmd.Parameters.AddWithValue("@EndTime", dto.EndTime);
                         cmd.Parameters.AddWithValue("@Price", dto.Price);
+                        cmd.Parameters.AddWithValue("@PaymentStatus", "Pending");
+                        cmd.Parameters.AddWithValue("@CreatedAt", DateTime.Now);
 
-                        cmd.ExecuteNonQuery(); // ✅ Correct method
+                        cmd.ExecuteNonQuery();
                     }
                 }
 

@@ -8,11 +8,12 @@
             public int OwnerId { get; set; }
             public int UserId { get; set; }
             public int PaymentMethodId { get; set; }
-            public string PaymentProof { get; set; }
+            public string? PaymentProof { get; set; }
             public DateTime BookingDate { get; set; }
             public TimeSpan StartTime { get; set; }
             public TimeSpan EndTime { get; set; }
             public decimal Price { get; set; }
+            public int CourtPitchId { get;  set; }
         }
 
     }
