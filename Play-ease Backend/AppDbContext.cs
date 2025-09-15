@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Play_ease_Backend;
+using static Play_ease_Backend.NewFolder.LoginModels; // 👈 import User model
 
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public DbSet<Login> Logins { get; set; }
+    public DbSet<User> Users { get; set; }   // ✅ correct
 }
