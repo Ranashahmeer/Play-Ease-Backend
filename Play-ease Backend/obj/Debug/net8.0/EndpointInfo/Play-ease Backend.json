@@ -1,0 +1,887 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Play-ease Backend",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/GetDataFromDatasource/GetDataByDataSource": {
+      "get": {
+        "tags": [
+          "GetDataFromDatasource"
+        ],
+        "parameters": [
+          {
+            "name": "dataSourceId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "whereClause",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Login/register": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Login/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Matches": {
+      "get": {
+        "tags": [
+          "Matches"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Matches"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatchDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatchDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatchDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRequest"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Matches/available/{userId}": {
+      "get": {
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Matches/my/{userId}": {
+      "get": {
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MatchRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Matches/{id}": {
+      "get": {
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRequest"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRequest"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Matches/{matchId}/applicants": {
+      "get": {
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Applicant"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Applicant"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Applicant"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Matches/apply": {
+      "post": {
+        "tags": [
+          "Matches"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Matches/{matchId}/applicants/{applicantId}": {
+      "put": {
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "applicantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApplicantStatusDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApplicantStatusDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApplicantStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/SaveBookings/create": {
+      "post": {
+        "tags": [
+          "SaveBookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/SaveBookings/cancel/{id}": {
+      "put": {
+        "tags": [
+          "SaveBookings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Applicant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "matchId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "appliedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplicationDto": {
+        "required": [
+          "matchId",
+          "role",
+          "userId",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "matchId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BookingDto": {
+        "type": "object",
+        "properties": {
+          "courtId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ownerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentMethodId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentProof": {
+            "type": "string",
+            "nullable": true
+          },
+          "bookingDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startTime": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "endTime": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "courtPitchId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMatchDto": {
+        "required": [
+          "date",
+          "endTime",
+          "location",
+          "numPlayers",
+          "price",
+          "roles",
+          "startTime",
+          "title",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startTime": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "endTime": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "location": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "roles": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "numPlayers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequestDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MatchRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "endTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "type": "string",
+            "nullable": true
+          },
+          "numPlayers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "organizer": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterRequestDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cnic": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeSpan": {
+        "type": "object",
+        "properties": {
+          "ticks": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "hours": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "milliseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "microseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "nanoseconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "totalDays": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalHours": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMilliseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMicroseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalNanoseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMinutes": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalSeconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateApplicantStatusDto": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
