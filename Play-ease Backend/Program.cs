@@ -36,7 +36,7 @@ namespace Play_ease_Backend
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             // ✅ Apply CORS before authorization
             app.UseCors("AllowAngularApp");

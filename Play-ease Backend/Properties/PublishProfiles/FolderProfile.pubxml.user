@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Shahmeer\Desktop\FYP\Play-Ease-Backend\Play-ease Backend\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2025-11-16T04:26:04.2794678Z||;True|2025-11-16T09:25:47.0899080+05:00||;True|2025-11-16T09:17:00.2748001+05:00||;True|2025-11-16T08:30:19.4073742+05:00||;True|2025-11-16T06:10:13.9479954+05:00||;True|2025-11-16T06:10:07.0874501+05:00||;True|2025-11-15T20:33:13.6111919+05:00||;True|2025-11-15T17:48:18.5267361+05:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
