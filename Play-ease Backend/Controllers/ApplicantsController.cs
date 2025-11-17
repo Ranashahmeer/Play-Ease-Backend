@@ -45,25 +45,24 @@ namespace Play_ease_Backend.Controllers
 
 
 
-        // ✅ UPDATE STATUS (accept / reject)
-        [HttpPut("{matchId}/applicants/{applicantId}")]
-        public async Task<IActionResult> UpdateStatus(int matchId, int applicantId, [FromBody] dynamic obj)
+        [HttpPut("{requestId}/applicants/{applicantId}")]
+        public async Task<IActionResult> UpdateApplicantStatus(int requestId, int applicantId, [FromBody] UpdateApplicantStatusDto dto)
         {
-            string status = obj.status;
-
             var applicant = await _context.MatchApplicants
-                .FirstOrDefaultAsync(a => a.Id == applicantId && a.MatchId == matchId);
+                .FirstOrDefaultAsync(a => a.Id == applicantId && a.MatchId == requestId);
 
             if (applicant == null)
-                return NotFound(new { message = "Applicant not found." });
+                return NotFound(new { message = "Applicant not found" });
 
-            applicant.Status = status;
+            // Only allow valid statuses
+            if (dto.Status != "pending" && dto.Status != "accepted" && dto.Status != "rejected")
+                return BadRequest(new { message = "Invalid status value" });
+
+            applicant.Status = dto.Status;
             await _context.SaveChangesAsync();
 
-            return Ok(new
-            {
-                message = $"Applicant status updated to {status}"
-            });
+            return Ok(new { message = $"Status updated to {applicant.Status} successfully!" });
         }
+
     }
 }
