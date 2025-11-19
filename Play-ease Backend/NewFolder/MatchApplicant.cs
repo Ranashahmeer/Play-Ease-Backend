@@ -9,6 +9,7 @@
         public string Role { get; set; }
         public string Status { get; set; } = "pending";
         public DateTime AppliedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? AcceptedAt { get; set; }
     }
 
 }

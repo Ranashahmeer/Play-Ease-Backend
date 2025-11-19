@@ -12,6 +12,8 @@ public class AppDbContext : DbContext
 
     public DbSet<MatchApplicant> MatchApplicants { get; set; }
 
+    public DbSet<ChatMessage> ChatMessages { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -46,6 +48,55 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<MatchApplicant>()
             .Property(a => a.AppliedAt)
             .HasColumnName("applied_at");
+
+        modelBuilder.Entity<MatchApplicant>()
+            .Property(a => a.AcceptedAt)
+            .HasColumnName("accepted_at");
+
+        // ChatMessage configuration
+        modelBuilder.Entity<ChatMessage>()
+            .ToTable("chat_messages");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.Id)
+            .HasColumnName("id");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.MatchId)
+            .HasColumnName("match_id");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.SenderId)
+            .HasColumnName("sender_id");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.SenderName)
+            .HasColumnName("sender_name")
+            .HasColumnType("nvarchar(255)");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.ReceiverId)
+            .HasColumnName("receiver_id");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.ReceiverName)
+            .HasColumnName("receiver_name")
+            .HasColumnType("nvarchar(255)");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.Message)
+            .HasColumnName("message")
+            .HasColumnType("nvarchar(max)");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.Timestamp)
+            .HasColumnName("timestamp")
+            .HasColumnType("datetime2");
+
+        modelBuilder.Entity<ChatMessage>()
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
+            .HasColumnType("datetime2");
     }
 
 }

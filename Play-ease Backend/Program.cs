@@ -24,8 +24,9 @@ namespace Play_ease_Backend
                 options.AddPolicy("AllowAngularApp",
                     policy => policy.WithOrigins("http://localhost:4200") // Allow Angular frontend
                                     .AllowAnyMethod()
-                                    .AllowAnyHeader());
-            });
+                                    .AllowAnyHeader()
+                 .AllowCredentials());
+        });
 
             var app = builder.Build();
 
@@ -38,8 +39,12 @@ namespace Play_ease_Backend
 
             //app.UseHttpsRedirection();
 
-            // ✅ Apply CORS before authorization
+            // ✅ Apply CORS before authorization (must be early in pipeline)
+            // CORS middleware automatically handles OPTIONS preflight requests
             app.UseCors("AllowAngularApp");
+
+            // Add routing before authorization
+            app.UseRouting();
 
             app.UseAuthorization();
 
